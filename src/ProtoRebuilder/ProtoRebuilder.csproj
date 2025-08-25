@@ -12,11 +12,10 @@
     <AssemblyName>Knapcode.ProtoRebuilder</AssemblyName>
 
     <PackAsTool>true</PackAsTool>
+    <ToolCommandName>protorebuilder</ToolCommandName>
     <RollForward>Major</RollForward>
 
     <PackageId>Knapcode.ProtoRebuilder</PackageId>
-    <ToolCommandName>protorebuilder</ToolCommandName>
-    <PackageVersion>0.1.0</PackageVersion>
     <Description>Generate .proto files from .NET assemblies (only IMessage implementations right now)</Description>
     <PackageTags>proto;protobuf;grpc;imessage;reverse;</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
