@@ -5,8 +5,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    
-    <ContinuousIntegrationBuild Condition="$(GITHUB_ACTIONS) == 'true'">true</ContinuousIntegrationBuild>
+
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 
     <RootNamespace>Knapcode.ProtoRebuilder</RootNamespace>
     <AssemblyName>Knapcode.ProtoRebuilder</AssemblyName>
