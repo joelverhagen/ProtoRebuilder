@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+package test.one_of;
+option csharp_namespace = "Test.OneOf";
+
+message Choice {
+  oneof value {
+    int32 int_value = 1;
+    string str_value = 2;
+  }
+
+  enum ValueOneofCase {
+    VALUE_ONEOF_CASE_NONE = 0;
+    VALUE_ONEOF_CASE_INT_VALUE = 1;
+    VALUE_ONEOF_CASE_STR_VALUE = 2;
+  }
+}

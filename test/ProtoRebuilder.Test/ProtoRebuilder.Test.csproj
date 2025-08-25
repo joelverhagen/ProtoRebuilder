@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Verify.Xunit" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Grpc.Tools" GeneratePathProperty="true" />
+	<PackageReference Include="CliWrap" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Protos\**\*.proto">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProtoRebuilder\ProtoRebuilder.csproj" />
+  </ItemGroup>
+
+  <Target Name="WriteToolPaths" AfterTargets="AfterCompile">
+    <ItemGroup>
+	    <ToolPath Include="PkgGrpc_Tools=$(PkgGrpc_Tools)" />
+		<ToolPath Include="RoslynTargetsPath=$(RoslynTargetsPath)" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(OutDir)tools.txt" Lines="@(ToolPath)" Overwrite="true" />
+  </Target>
+
+</Project>

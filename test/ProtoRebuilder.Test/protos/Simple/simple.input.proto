@@ -1,0 +1,15 @@
+syntax = "proto3";
+package test.simple;
+option csharp_namespace = "Test.Simple";
+
+enum Status {
+  UNKNOWN = 0;
+  STARTED = 1;
+  FINISHED = 2;
+}
+
+message SimpleMessage {
+  int32 id = 1;
+  string name = 2;
+  Status status = 3;
+}

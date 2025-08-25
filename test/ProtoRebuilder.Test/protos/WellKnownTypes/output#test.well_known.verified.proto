@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+package test.well_known;
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "Test.WellKnown";
+
+message Event {
+  google.protobuf.Timestamp when = 1;
+  bytes how_long = 2; // Unknown type: Google.Protobuf.WellKnownTypes.Duration
+  bytes nothing = 3; // Unknown type: Google.Protobuf.WellKnownTypes.Empty
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+package test.nullable;
+option csharp_namespace = "Test.Nullable";
+
+import "google/protobuf/wrappers.proto";
+
+message MyMessage {
+  google.protobuf.Int32Value Id = 1;
+  google.protobuf.StringValue Name = 2;
+}

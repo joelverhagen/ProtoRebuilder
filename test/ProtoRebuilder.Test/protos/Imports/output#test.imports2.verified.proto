@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+package test.imports2;
+option csharp_namespace = "Test.Imports2";
+
+message Wheel {
+  int32 id = 1;
+}

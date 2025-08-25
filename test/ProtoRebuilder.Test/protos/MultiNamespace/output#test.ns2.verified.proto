@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+package test.ns2;
+option csharp_namespace = "Test.NS2";
+
+message MessageB {
+  string text = 1;
+}

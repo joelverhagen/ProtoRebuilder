@@ -1,0 +1,15 @@
+syntax = "proto3";
+package test.nested;
+option csharp_namespace = "Test.Nested";
+
+message Outer {
+  message Inner {
+    int32 x = 1;
+  }
+  enum Kind {
+    FOO = 0;
+    BAR = 1;
+  }
+  Inner inner = 1;
+  Kind kind = 2;
+}

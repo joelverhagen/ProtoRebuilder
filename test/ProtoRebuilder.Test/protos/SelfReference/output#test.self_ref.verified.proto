@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+package test.self_ref;
+option csharp_namespace = "Test.SelfRef";
+
+message Node {
+  int32 id = 1;
+  test.self_ref.Node child = 2;
+}

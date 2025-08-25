@@ -1,0 +1,11 @@
+syntax = "proto3";
+package test.cyclic;
+option csharp_namespace = "Test.Cyclic";
+
+message A {
+  B b = 1;
+}
+
+message B {
+  A a = 1;
+}

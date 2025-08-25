@@ -1,0 +1,9 @@
+syntax = "proto3";
+package test.imports;
+option csharp_namespace = "Test.Imports1";
+
+import "import2.input.proto";
+
+message Car {
+  Wheel wheel = 1;
+}
