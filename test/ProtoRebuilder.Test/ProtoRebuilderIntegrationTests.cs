@@ -21,12 +21,16 @@ public class ProtoRebuilderIntegrationTests
 
     public static IEnumerable<object[]> GetProtoTestNames()
     {
-        var baseDir = Path.Combine(Directory.GetCurrentDirectory(), "protos");
-        foreach (var dir in Directory.GetDirectories(baseDir))
+        foreach (var dir in Directory.GetDirectories(GetProtosDir()))
         {
             var testName = Path.GetFileName(dir)!;
             yield return new object[] { testName };
         }
+    }
+
+    private static string GetProtosDir()
+    {
+        return Path.Combine(Directory.GetCurrentDirectory(), "protos");
     }
 
     [Theory]
@@ -53,7 +57,7 @@ public class ProtoRebuilderIntegrationTests
         Directory.CreateDirectory(outDir);
 
         // Find all .proto files in the directory
-        var fullProtoDir = Path.Combine(Directory.GetCurrentDirectory(), "Protos", testName);
+        var fullProtoDir = Path.Combine(GetProtosDir(), testName);
         var protoFiles = Directory.GetFiles(fullProtoDir, "*.input.proto", SearchOption.TopDirectoryOnly);
         if (protoFiles.Length == 0)
             throw new InvalidOperationException($"No .proto files found in {testName}");
@@ -95,7 +99,7 @@ public class ProtoRebuilderIntegrationTests
             .ToList();
 
         await Verify(outputProtoFiles)
-            .UseDirectory(Path.Combine("protos", testName))
+            .UseDirectory(Path.Combine(GetProtosDir(), testName))
             .UseFileName("output");
     }
 
