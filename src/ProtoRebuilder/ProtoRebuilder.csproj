@@ -5,19 +5,21 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
+    <ContinuousIntegrationBuild Condition="$(GITHUB_ACTIONS) == 'true'">true</ContinuousIntegrationBuild>
 
-	<RootNamespace>Knapcode.ProtoRebuilder</RootNamespace>
-	<AssemblyName>Knapcode.ProtoRebuilder</AssemblyName>
+    <RootNamespace>Knapcode.ProtoRebuilder</RootNamespace>
+    <AssemblyName>Knapcode.ProtoRebuilder</AssemblyName>
 
-	<PackAsTool>true</PackAsTool>
+    <PackAsTool>true</PackAsTool>
     <RollForward>Major</RollForward>
 
     <PackageId>Knapcode.ProtoRebuilder</PackageId>
-	<ToolCommandName>protorebuilder</ToolCommandName>
+    <ToolCommandName>protorebuilder</ToolCommandName>
     <PackageVersion>0.1.0</PackageVersion>
     <Description>Generate .proto files from .NET assemblies (only IMessage implementations right now)</Description>
-	<PackageTags>proto;protobuf;grpc;imessage;reverse;</PackageTags>
-	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>proto;protobuf;grpc;imessage;reverse;</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
