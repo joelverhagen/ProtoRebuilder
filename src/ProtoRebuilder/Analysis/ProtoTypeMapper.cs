@@ -76,19 +76,19 @@ public static class ProtoTypeMapper
                     switch (nullableType.Value.TypeName)
                     {
                         case "bool":
-                            return ("BoolValue", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.BoolValue", ["google/protobuf/wrappers.proto"], []);
                         case "double":
-                            return ("DoubleValue", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.DoubleValue", ["google/protobuf/wrappers.proto"], []);
                         case "float":
-                            return ("FloatValue", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.FloatValue", ["google/protobuf/wrappers.proto"], []);
                         case "int32":
-                            return ("Int32Value", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.Int32Value", ["google/protobuf/wrappers.proto"], []);
                         case "int64":
-                            return ("Int64Value", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.Int64Value", ["google/protobuf/wrappers.proto"], []);
                         case "uint32":
-                            return ("UInt32Value", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.UInt32Value", ["google/protobuf/wrappers.proto"], []);
                         case "uint64":
-                            return ("UInt64Value", ["google/protobuf/wrappers.proto"], []);
+                            return ("google.protobuf.UInt64Value", ["google/protobuf/wrappers.proto"], []);
                     }
                 }
             }
