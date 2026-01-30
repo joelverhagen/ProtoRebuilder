@@ -1,4 +1,5 @@
-﻿using Mono.Cecil;
+﻿using System.Numerics;
+using Mono.Cecil;
 
 namespace Knapcode.ProtoRebuilder;
 
@@ -26,7 +27,7 @@ public static class TypeAnalyzer
         {
             var pairs = type.Fields
                 .Where(f => f.IsLiteral && f.HasConstant)
-                .Select(f => new KeyValuePair<string, int>(f.Name, (int)f.Constant))
+                .Select(f => new KeyValuePair<string, BigInteger>(f.Name, CastToBigInteger(f.Constant)))
                 .OrderBy(kvp => kvp.Value)
                 .ToList();
             var enumInfo = new EnumInfo { Type = type, RootMessage = rootMessage, Pairs = pairs };
@@ -38,6 +39,24 @@ public static class TypeAnalyzer
         {
             GatherRelevantTypes(ctx, nested, rootMessage ?? messageInfo);
         }
+    }
+
+    private static BigInteger CastToBigInteger(object value)
+    {
+        return value switch
+        {
+            byte x => x,
+            sbyte x => x,
+            ushort x => x,
+            short x => x,
+            uint x => x,
+            int x => x,
+            ulong x => x,
+            long x => x,
+            UInt128 x => x,
+            Int128 x => x,
+            _ => throw new ArgumentException($"Unable to cast {value.GetType().FullName} to a long."),
+        };
     }
 
     public static void PopulateMessageFields(RebuilderContext ctx)
